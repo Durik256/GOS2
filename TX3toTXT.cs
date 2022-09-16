@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace TX3toTXT
@@ -11,12 +11,30 @@ namespace TX3toTXT
             {
                 byte[] Buffer = File.ReadAllBytes(args[0]);
 
-                for (int x = 0; x < Buffer.Length; x++)
+                string extension = Path.GetExtension(args[0]);
+
+                if (extension.ToLower() == ".txt")
                 {
-                    if (Buffer[x] >= 0xF)
-                        Buffer[x] = (byte)(14 - Buffer[x]);
+                    for (int x = 0; x < Buffer.Length; x++)
+                    {
+                        if (Buffer[x] >= 0xF)
+                            Buffer[x] = (byte)(14 + (256 - Buffer[x]));
+                    }
+                    extension = ".tx3";
                 }
-                File.WriteAllBytes(args[0].Replace(".tx3", ".txt").Replace(".TX3", ".txt"), Buffer);
+                else if (extension.ToLower() == ".tx3")
+                {
+                    for (int x = 0; x < Buffer.Length; x++)
+                    {
+                        if (Buffer[x] >= 0xF)
+                            Buffer[x] = (byte)(14 - Buffer[x]);
+                    }
+                    extension = ".txt";
+                }
+                else
+                    Environment.Exit(0);
+
+                File.WriteAllBytes(Path.ChangeExtension(args[0], extension), Buffer);
                 Console.WriteLine("Done");
             }
         }
