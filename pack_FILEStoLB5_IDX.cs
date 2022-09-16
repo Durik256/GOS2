@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
-namespace TX3toTXT
+namespace FILEtoLB5
 {
     internal class Program
     {
