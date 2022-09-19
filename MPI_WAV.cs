@@ -9,8 +9,8 @@ namespace MPIandWAV
         {
             if (args.Length > 0)
             {
-                byte[] wavHeader = { 82, 73, 70, 70, 151, 121, 2, 0, 87, 65, 86, 69 };
-                byte[] mpiHeader = { 70, 79, 80, 73, 151, 121, 2, 0, 71, 69, 80, 79 };
+                string wavHeader = "RIFF____WAVE";
+                string mpiHeader = "MOPI____GEPO";
                 byte[] Buffer = File.ReadAllBytes(args[0]);
 
                 string extension = Path.GetExtension(args[0]);
@@ -18,15 +18,19 @@ namespace MPIandWAV
                 if (extension.ToLower() == ".mpi")
                 {
                     for (int x = 0; x < wavHeader.Length; x++)
-                        Buffer[x] = wavHeader[x];
-                    
+                    {
+                        if (wavHeader[x] != '_')
+                            Buffer[x] = (byte)wavHeader[x];
+                    }
                     extension = ".wav";
                 }
                 else if (extension.ToLower() == ".wav")
                 {
                     for (int x = 0; x < mpiHeader.Length; x++)
-                        Buffer[x] = mpiHeader[x];
-
+                    {
+                        if (mpiHeader[x] != '_')
+                            Buffer[x] = (byte)mpiHeader[x];
+                    }
                     extension = ".mpi";
                 }
                 else
