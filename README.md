@@ -1,5 +1,5 @@
 # GOS2-Tools
-**Tools for games Evangelion "Girlfriend of Steel 2"<br />**
+# **Tools for games Evangelion "Girlfriend of Steel 2"<br />**
 also a plugin for Noesis. allows you to open *.bp3 and also export any image to .bp3 [GitHub Pages](https://github.com/Durik256/Noesis-Plugins/blob/master/tex_bp3.py)<br />
 > drop your file on *.exe or with cmd:<br />
 - BMPtoBP3.exe yourfile.bmp //convert [BMP] >> [BP3]<br />
