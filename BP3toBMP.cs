@@ -90,11 +90,13 @@ namespace BP3toBMP
                         List<byte> chunkPixel = new List<byte>();
                         if (bitCount > 0)
                         {
+                            long curPos = stream.Position;
                             for (int cY = 0; cY < chunkY; cY++) {
                                 chunkPixel.AddRange(reader.ReadBytes((bitCount * chunkX) / 8));
                                 chunkPixel.AddRange(new byte[bitCount - ((bitCount * chunkX) / 8)]);
                             }
                             chunkPixel.AddRange(new byte[(bitCount * 8) - (chunkPixel.Count)]);
+                            stream.Seek(curPos + ((bitCount * chunkX * chunkY)/8), SeekOrigin.Begin);
                         }
                         int v20 = 3 * wt;
                         int v23 = 3 * wt * 8 * (i / (wt / 8));
