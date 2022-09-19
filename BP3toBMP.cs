@@ -92,7 +92,7 @@ namespace BP3toBMP
                         {
                             for (int cY = 0; cY < chunkY; cY++) {
                                 chunkPixel.AddRange(reader.ReadBytes((bitCount * chunkX) / 8));
-                                chunkPixel.AddRange(new byte[bitCount - (bitCount * chunkX / 8)]);
+                                chunkPixel.AddRange(new byte[bitCount - ((bitCount * chunkX) / 8)]);
                             }
                             chunkPixel.AddRange(new byte[(bitCount * 8) - (chunkPixel.Count)]);
                         }
