@@ -1,7 +1,7 @@
 # **Tools for games Evangelion "Girlfriend of Steel 2"<br />**
 #### also a plugin for Noesis. allows you to open *.bp3 and also export any image to .bp3 [GitHub Pages](https://github.com/Durik256/Noesis-Plugins/blob/master/tex_bp3.py)<br />
 #### all_Form.exe:<br />
-![](all_Form.gif)
+<img src="all_Form.gif" width="256" height="177" />
 
 > drop your file on *.exe or with cmd:<br />
 
